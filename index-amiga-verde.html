@@ -1,0 +1,225 @@
+<!--
+  GUIA RÁPIDO (apaga quando quiseres)
+  - Onde vês EDITA, troca pelo teu texto.
+  - Imagens/PDFs/vídeos vão para a pasta "assets"; os links apontam para lá.
+  - Cada projeto é um bloco <article class="proj"> — copia para criar mais.
+  - O TEMA (cores e fontes) está no bloco :root, no topo do <style>.
+-->
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDITA: O teu nome — Portfólio</title>
+<meta name="description" content="EDITA: uma frase curta sobre ti.">
+<meta name="robots" content="noindex, nofollow">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Fraunces:ital,opsz,wght@1,9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3F4F3;
+    --ink:#20272B;
+    --muted:#5E6A70;
+    --accent:#1F6E6A;
+    --accent-soft:#DCEBE9;
+    --card:#FFFFFF;
+    --line:rgba(32,39,43,.12);
+    --serif:"Fraunces",Georgia,serif;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(1100px 560px at 82% -8%,#DFE7E5,transparent 60%),var(--paper)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 30px}
+  a{color:var(--accent);text-decoration:none}
+
+  header.bar{position:sticky;top:0;z-index:20;background:rgba(236,243,242,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+  header.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  header.bar .who{font-family:var(--display);font-weight:700;font-size:19px}
+  header.bar nav{display:flex;gap:8px}
+  header.bar nav a{color:var(--ink);font-size:13px;padding:6px 13px;border-radius:99px;transition:background .2s,color .2s}
+  header.bar nav a:hover{background:var(--accent-soft);color:var(--accent)}
+  @media(max-width:680px){header.bar nav{display:none}}
+
+  .hero{padding:92px 0 68px}
+  .kicker{display:inline-block;font-size:13px;font-weight:500;color:var(--accent);background:var(--accent-soft);padding:6px 15px;border-radius:99px;margin:0 0 26px}
+  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(50px,10vw,104px);line-height:.94;letter-spacing:-.03em;margin:0 0 18px}
+  .tagline{position:relative;display:inline-block;font-family:var(--serif);font-style:italic;font-size:clamp(22px,3.4vw,32px);color:var(--ink);margin:0 0 8px}
+  .squiggle{display:block;width:min(340px,80%);height:12px;margin:2px 0 26px;color:var(--accent)}
+  .hero .lead{font-size:clamp(17px,2vw,19px);color:var(--muted);max-width:56ch;margin:0 0 30px;line-height:1.7}
+  .hero .contacts{display:flex;flex-wrap:wrap;gap:12px}
+  .hero .contacts a{font-weight:500;font-size:14px;background:var(--ink);color:#fff;padding:11px 20px;border-radius:99px;transition:transform .2s,background .2s}
+  .hero .contacts a:hover{transform:translateY(-2px);background:var(--accent)}
+  .hero .contacts a.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .hero .contacts a.ghost:hover{border-color:var(--accent);color:var(--accent);background:transparent}
+
+  section.area{padding:60px 0 12px;scroll-margin-top:80px}
+  .area-head{margin-bottom:34px}
+  .chip{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--accent);background:var(--accent-soft);padding:5px 13px;border-radius:99px;margin:0 0 14px}
+  .area-head h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.4vw,40px);line-height:1.02;letter-spacing:-.02em;margin:0 0 8px}
+  .area-head p{color:var(--muted);margin:0;max-width:56ch}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+  .proj{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:0 2px 10px rgba(58,42,46,.05);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s}
+  .proj:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 18px 40px rgba(31,110,106,.16)}
+  .shot{aspect-ratio:16/10;border-radius:11px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--accent);font-size:12.5px;font-weight:500;padding:12px;margin:0 0 15px;overflow:hidden}
+  .shot img,.shot video{width:100%;height:100%;object-fit:cover}
+  .proj h3{font-family:var(--display);font-weight:600;font-size:20px;margin:0 0 7px;padding:0 4px}
+  .proj .desc{color:var(--muted);font-size:14.5px;line-height:1.55;margin:0 0 14px;padding:0 4px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 4px 14px}
+  .tag{font-size:12px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:3px 11px}
+  .links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 16px;padding:0 4px;font-size:13.5px;font-weight:500}
+  .links a.muted{color:var(--muted)}
+
+  footer{margin-top:80px;background:var(--ink);color:#F6E9EA;border-radius:32px 32px 0 0;padding:60px 0 70px}
+  footer .bye{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,48px);margin:0 0 20px;line-height:1}
+  footer a{color:#fff}
+  footer .contacts{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 26px}
+  footer .contacts a{border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px}
+  footer .small{font-size:13px;color:#D6B8BC}
+
+  .js .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+  .grid .proj:nth-child(2){transition-delay:.07s}
+  .grid .proj:nth-child(3){transition-delay:.14s}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="who">EDITA: nome</span>
+    <nav>
+      <a href="#destaque">destaque</a>
+      <a href="#software">projetos</a>
+      <a href="#contactos">contactos</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">EDITA: curso · universidade</span>
+    <h1>EDITA:<br>O teu nome</h1>
+    <span class="tagline">EDITA: uma frase curta que te define.</span>
+    <svg class="squiggle" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 Q 18 2 34 7 T 66 7 T 98 7 T 130 7 T 162 7 T 198 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    <p class="lead">EDITA: uma ou duas frases sobre ti — o que te interessa e o que procuras (ex.: candidatura a mestrado).</p>
+    <div class="contacts" id="contactos">
+      <a href="mailto:EDITA@email.com">email pessoal</a>
+      <a class="ghost" href="mailto:EDITA@alunos.universidade.pt">email da universidade</a>
+    </div>
+  </div>
+</div>
+
+<!-- DESTAQUE -->
+<section class="area" id="destaque">
+  <div class="wrap">
+    <div class="area-head reveal">
+      <span class="chip">destaque</span>
+      <h2>Projetos em destaque</h2>
+      <p>Os trabalhos de que mais te orgulhas, do início ao fim.</p>
+    </div>
+    <div class="grid">
+      <!-- Duplica este bloco <article> para cada projeto -->
+      <article class="proj reveal">
+        <div class="shot">adicionar vídeo ou fotos</div>
+        <h3>EDITA: nome do projeto</h3>
+        <p class="desc">EDITA: o que era, o que fizeste e o resultado, em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA: área</span><span class="tag">EDITA: tecnologia</span></div>
+        <div class="links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="shot">adicionar vídeo ou fotos</div>
+        <h3>EDITA: nome do projeto</h3>
+        <p class="desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA: área</span></div>
+        <div class="links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS / ÁREA 1 -->
+<section class="area" id="software">
+  <div class="wrap">
+    <div class="area-head reveal">
+      <span class="chip">EDITA: área</span>
+      <h2>EDITA: título da área</h2>
+      <p>EDITA: uma frase de enquadramento.</p>
+    </div>
+    <div class="grid">
+      <article class="proj reveal">
+        <div class="shot">adicionar imagem</div>
+        <h3>EDITA: nome do projeto</h3>
+        <p class="desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="shot">adicionar imagem</div>
+        <h3>EDITA: nome do projeto</h3>
+        <p class="desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="shot">adicionar imagem</div>
+        <h3>EDITA: nome do projeto</h3>
+        <p class="desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="links"><a class="muted" href="#">disponível a pedido</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS / ÁREA 2  (copia esta secção inteira para mais áreas) -->
+<section class="area" id="area2">
+  <div class="wrap">
+    <div class="area-head reveal">
+      <span class="chip">EDITA: área</span>
+      <h2>EDITA: título da área</h2>
+      <p>EDITA: uma frase de enquadramento.</p>
+    </div>
+    <div class="grid">
+      <article class="proj reveal">
+        <div class="shot">adicionar imagem</div>
+        <h3>EDITA: nome do projeto</h3>
+        <p class="desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="bye">Vamos falar?</p>
+    <div class="contacts">
+      <a href="mailto:EDITA@email.com">EDITA@email.com</a>
+      <a href="mailto:EDITA@alunos.universidade.pt">EDITA@alunos.universidade.pt</a>
+    </div>
+    <p class="small">EDITA: O teu nome · 2026 · construído com GitHub Pages</p>
+  </div>
+</footer>
+
+<script>
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
